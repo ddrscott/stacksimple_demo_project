@@ -1,0 +1,29 @@
+<div class="form-group col-md-4">
+  <%= form_with(model: guest_book, local: true) do |form| %>
+    <% if guest_book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(guest_book.errors.count, "error") %> prohibited this guest_book from being saved:</h2>
+
+        <ul>
+        <% guest_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, class: 'control-label' %>
+      <%= form.text_field :name, id: :guest_book_name, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :message, class: 'control-label' %>
+      <%= form.text_field :message, id: :guest_book_message, class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Sign Guest Book", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

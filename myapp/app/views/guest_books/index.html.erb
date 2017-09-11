@@ -1,0 +1,27 @@
+<div class='container'>
+  <p id="notice"><%= notice %></p>
+
+  <h1>Guest Book</h1>
+
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @guest_books.each do |guest_book| %>
+        <tr>
+          <td><%= guest_book.name %></td>
+          <td><%= guest_book.message %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Message', new_guest_book_path %>
+</div>

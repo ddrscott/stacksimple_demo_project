@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='alert alert-info'>
+    This chatroom demo is taken directly from Heroku. It is an example of using Postgresql, Redis, and ActionCable
+     https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable
+  </div>
+</div>
+
+<div class="row col-md-8 col-md-offset-2">
+  <h1>"<%= @chatroom.topic.titleize %>" Chatroom</h1>
+
+  <div class='container'>
+    <div class="panel panel-default">
+      <% if @chatroom.messages.any? %>
+        <h2>Conversation</h2>
+        <div class="panel-body" id="messages">
+          <%= render partial: 'messages/message', collection: @chatroom.messages %>
+        </div>
+      <%else%>
+        <div class="panel-body hidden" id="messages"></div>
+      <%end%>
+    </div>
+  </div>
+
+  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+</div>

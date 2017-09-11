@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails 5 - ActionCable Demo</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to "Guess Book", guest_books_path, class: 'btn btn-default', role: 'button' %> |
+    <%= link_to "Chat room", chatroom_path(default_chatroom), class: 'btn btn-default' %>
+    <%= yield %>
+  </body>
+</html>

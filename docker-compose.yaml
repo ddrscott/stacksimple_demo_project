@@ -1,0 +1,26 @@
+version: '2'
+services:
+  datastore_redis:
+    image: redis
+    container_name: redis_${CONTAINER_NAME}
+    volumes:
+      - ./data/var/lib/redis:/var/lib/redis
+  datastore_postgres:
+    image: postgres
+    container_name: postgres_${CONTAINER_NAME}
+    volumes:
+      - ./data/var/lib/postgresql/data:/var/lib/postgresql/data
+  web_rails:
+    image: ${CONTAINER_NAME}
+    environment:
+      - POSTGRES_HOST=postgres_${CONTAINER_NAME}
+      - REDIS_HOST=redis_${CONTAINER_NAME}
+    container_name: ${CONTAINER_NAME}
+    build: .
+    volumes:
+      - ./myapp:/myapp
+    ports:
+      - 3000:3000
+    depends_on:
+      - datastore_postgres
+      - datastore_redis
